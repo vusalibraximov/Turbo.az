@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-extraction-rules>
+    <cloud-backup>
+        <!-- By default, all data is backed up to cloud -->
+        <include domain="root" path="."/>
+        <include domain="file" path="."/>
+        <include domain="database" path="."/>
+        <include domain="sharedpref" path="."/>
+        
+        <!-- Exclude sensitive data -->
+        <exclude domain="sharedpref" path="sensitive_data.xml"/>
+    </cloud-backup>
+    
+    <device-transfer>
+        <!-- Same rules apply for device to device transfer -->
+        <include domain="root" path="."/>
+        <include domain="file" path="."/>
+        <include domain="database" path="."/>
+        <include domain="sharedpref" path="."/>
+        
+        <!-- Exclude sensitive data -->
+        <exclude domain="sharedpref" path="sensitive_data.xml"/>
+    </device-transfer>
+</data-extraction-rules>

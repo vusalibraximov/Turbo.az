@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/carListFragment">
+
+    <fragment
+        android:id="@+id/carListFragment"
+        android:name="com.example.turboaz.presentation.car_list.CarListFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_car_list">
+        <action
+            android:id="@+id/action_carListFragment_to_carDetailFragment"
+            app:destination="@id/carDetailFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim">
+            <argument
+                android:name="carId"
+                app:argType="string" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/carDetailFragment"
+        android:name="com.example.turboaz.presentation.car_detail.CarDetailFragment"
+        android:label="@string/car_details"
+        tools:layout="@layout/fragment_car_detail">
+        <argument
+            android:name="carId"
+            app:argType="string" />
+    </fragment>
+
+    <dialog
+        android:id="@+id/filterDialogFragment"
+        android:name="com.example.turboaz.presentation.car_list.FilterDialogFragment"
+        android:label="@string/filter_cars"
+        tools:layout="@layout/fragment_filter_dialog" />
+
+</navigation>

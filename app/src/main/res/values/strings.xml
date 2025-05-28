@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Turbo.az</string>
+    
+    <!-- Car List Screen -->
+    <string name="search_hint">Search cars…</string>
+    <string name="filter">Filter</string>
+    <string name="car_image">Car image</string>
+    <string name="no_cars_found">No cars found</string>
+    <string name="error_loading_cars">Error loading cars</string>
+    <string name="retry">Retry</string>
+
+    <!-- Filter Dialog -->
+    <string name="filter_cars">Filter Cars</string>
+    <string name="price_range">Price Range</string>
+    <string name="year_range">Year Range</string>
+    <string name="transmission">Transmission</string>
+    <string name="automatic">Automatic</string>
+    <string name="manual">Manual</string>
+    <string name="semi_automatic">Semi-Automatic</string>
+    <string name="fuel_type">Fuel Type</string>
+    <string name="gasoline">Gasoline</string>
+    <string name="diesel">Diesel</string>
+    <string name="electric">Electric</string>
+    <string name="hybrid">Hybrid</string>
+    <string name="reset">Reset</string>
+    <string name="apply">Apply</string>
+
+    <!-- Car Details -->
+    <string name="seller_info">Seller Information</string>
+    <string name="contact_seller">Contact Seller</string>
+    <string name="car_details">Car Details</string>
+    <string name="brand">Brand</string>
+    <string name="model">Model</string>
+    <string name="year">Year</string>
+    <string name="mileage">Mileage</string>
+    <string name="color">Color</string>
+    <string name="price">Price</string>
+    <string name="description">Description</string>
+    <string name="location">Location</string>
+    <string name="seller_name">Seller Name</string>
+    <string name="seller_phone">Phone Number</string>
+    <string name="posted_date">Posted Date</string>
+
+    <!-- Error Messages -->
+    <string name="error_network">Network error. Please check your connection.</string>
+    <string name="error_unknown">An unexpected error occurred.</string>
+    <string name="error_server">Server error. Please try again later.</string>
+</resources>

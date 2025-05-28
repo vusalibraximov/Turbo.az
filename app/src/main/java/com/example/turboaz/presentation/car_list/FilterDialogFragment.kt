@@ -45,13 +45,12 @@ class FilterDialogFragment : DialogFragment() {
             valueFrom = 0f
             valueTo = 100000f
             values = listOf(0f, 100000f)
-            
+
             setLabelFormatter { value ->
-                NumberFormat.getCurrencyInstance(Locale.US)
-                    .format(value.toDouble())
+                NumberFormat.getCurrencyInstance(Locale.US).format(value.toDouble())
             }
 
-            addOnChangeListener { slider, _, _ ->
+            addOnChangeListener { slider: RangeSlider, _, _ ->
                 updatePriceLabels(slider.values[0], slider.values[1])
             }
         }
@@ -68,23 +67,21 @@ class FilterDialogFragment : DialogFragment() {
                 value.toInt().toString()
             }
 
-            addOnChangeListener { slider, _, _ ->
+            addOnChangeListener { slider: RangeSlider, _, _ ->
                 updateYearLabels(slider.values[0].toInt(), slider.values[1].toInt())
             }
         }
     }
 
     private fun setupTransmissionFilter() {
-        // Setup transmission chip group
-        binding.transmissionChipGroup.setOnCheckedStateChangeListener { group, _ ->
-            // Handle transmission selection
+        binding.transmissionChipGroup.setOnCheckedChangeListener { group, checkedId ->
+
         }
     }
 
     private fun setupFuelTypeFilter() {
-        // Setup fuel type chip group
-        binding.fuelTypeChipGroup.setOnCheckedStateChangeListener { group, _ ->
-            // Handle fuel type selection
+        binding.fuelTypeChipGroup.setOnCheckedChangeListener { group, checkedId ->
+
         }
     }
 
@@ -113,7 +110,7 @@ class FilterDialogFragment : DialogFragment() {
     private fun applyFilters() {
         val priceRange = binding.priceRangeSlider.values
         val yearRange = binding.yearRangeSlider.values
-        
+
         val selectedTransmission = when (binding.transmissionChipGroup.checkedChipId) {
             R.id.chipAutomatic -> "AUTOMATIC"
             R.id.chipManual -> "MANUAL"
@@ -129,16 +126,18 @@ class FilterDialogFragment : DialogFragment() {
             else -> null
         }
 
-        viewModel.onEvent(CarListEvent.Filter(
-            CarFilters(
-                minPrice = priceRange[0].toDouble(),
-                maxPrice = priceRange[1].toDouble(),
-                minYear = yearRange[0].toInt(),
-                maxYear = yearRange[1].toInt(),
-                transmission = selectedTransmission,
-                fuelType = selectedFuelType
+        viewModel.onEvent(
+            CarListEvent.Filter(
+                CarFilters(
+                    minPrice = priceRange[0].toDouble(),
+                    maxPrice = priceRange[1].toDouble(),
+                    minYear = yearRange[0].toInt(),
+                    maxYear = yearRange[1].toInt(),
+                    transmission = selectedTransmission,
+                    fuelType = selectedFuelType
+                )
             )
-        ))
+        )
     }
 
     private fun resetFilters() {

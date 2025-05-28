@@ -1,6 +1,7 @@
 package com.example.turboaz.data.repository
 
 import com.example.turboaz.data.remote.CarApiService
+import com.example.turboaz.data.remote.toCar
 import com.example.turboaz.domain.model.Car
 import com.example.turboaz.domain.repository.CarRepository
 import kotlinx.coroutines.flow.Flow
@@ -17,7 +18,8 @@ class CarRepositoryImpl @Inject constructor(
 
     override suspend fun getCars(): Flow<List<Car>> = flow {
         try {
-            val cars = api.getCars().map { it.toCar() }
+            val carsDto = api.getCars()
+            val cars = carsDto.map { it.toCar() }
             emit(cars)
         } catch (e: HttpException) {
             throw Exception("An unexpected error occurred")
@@ -28,8 +30,8 @@ class CarRepositoryImpl @Inject constructor(
 
     override suspend fun getCarById(id: String): Flow<Car> = flow {
         try {
-            val car = api.getCarById(id).toCar()
-            emit(car)
+            val carDto = api.getCarById(id)
+            emit(carDto.toCar())
         } catch (e: HttpException) {
             throw Exception("An unexpected error occurred")
         } catch (e: IOException) {
@@ -39,7 +41,8 @@ class CarRepositoryImpl @Inject constructor(
 
     override suspend fun searchCars(query: String): Flow<List<Car>> = flow {
         try {
-            val cars = api.searchCars(query).map { it.toCar() }
+            val carsDto = api.searchCars(query)
+            val cars = carsDto.map { it.toCar() }
             emit(cars)
         } catch (e: HttpException) {
             throw Exception("An unexpected error occurred")
@@ -59,16 +62,17 @@ class CarRepositoryImpl @Inject constructor(
         transmission: String?
     ): Flow<List<Car>> = flow {
         try {
-            val cars = api.filterCars(
-                minPrice = minPrice,
-                maxPrice = maxPrice,
-                brand = brand,
-                model = model,
-                minYear = minYear,
-                maxYear = maxYear,
-                fuelType = fuelType,
-                transmission = transmission
-            ).map { it.toCar() }
+            val carsDto = api.filterCars(
+                minPrice,
+                maxPrice,
+                brand,
+                model,
+                minYear,
+                maxYear,
+                fuelType,
+                transmission
+            )
+            val cars = carsDto.map { it.toCar() }
             emit(cars)
         } catch (e: HttpException) {
             throw Exception("An unexpected error occurred")

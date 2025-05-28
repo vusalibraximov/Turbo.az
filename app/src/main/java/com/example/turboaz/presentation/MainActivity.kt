@@ -8,8 +8,9 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.turboaz.R
-import com.example.turboaz.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
+import com.example.turboaz.databinding.ActivityMainBinding
+
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {

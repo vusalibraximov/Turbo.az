@@ -6,6 +6,11 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface CarApiService {
+
+    companion object {
+        const val BASE_URL = "https://api.turbo.az/v1/"
+    }
+
     @GET("cars")
     suspend fun getCars(): List<CarDto>
 
@@ -26,8 +31,4 @@ interface CarApiService {
         @Query("fuelType") fuelType: String?,
         @Query("transmission") transmission: String?
     ): List<CarDto>
-
-    companion object {
-        const val BASE_URL = "https://api.turbo.az/v1/" // Replace with actual API base URL
-    }
 }

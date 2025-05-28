@@ -3,6 +3,10 @@ package com.example.turboaz.di
 import com.example.turboaz.data.remote.CarApiService
 import com.example.turboaz.data.repository.CarRepositoryImpl
 import com.example.turboaz.domain.repository.CarRepository
+import com.example.turboaz.domain.usecase.FilterCarsUseCase
+import com.example.turboaz.domain.usecase.GetCarByIdUseCase
+import com.example.turboaz.domain.usecase.GetCarsUseCase
+import com.example.turboaz.domain.usecase.SearchCarsUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

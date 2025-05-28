@@ -68,7 +68,7 @@ class CarListFragment : Fragment() {
         }
     }
 
-    private fun setupSwipeRefresh() {
+     fun setupSwipeRefresh() {
         binding.swipeRefreshLayout.setOnRefreshListener {
             viewModel.onEvent(CarListEvent.Refresh)
         }
@@ -76,7 +76,6 @@ class CarListFragment : Fragment() {
 
     private fun setupFilterButton() {
         binding.filterButton.setOnClickListener {
-            // Show filter dialog
             FilterDialogFragment().show(childFragmentManager, FilterDialogFragment.TAG)
         }
     }
